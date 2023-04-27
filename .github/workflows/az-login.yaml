@@ -16,3 +16,14 @@ jobs:
     
     - run: |
         az account show
+
+    - uses: actions/checkout@v2
+
+    - name: Set up Terraform
+      uses: hashicorp/setup-terraform@v1
+      with:
+        terraform_version: 1.4.0
+    
+    - name: Terraform version check
+      run: |
+        terraform -version
