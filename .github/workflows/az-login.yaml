@@ -45,4 +45,10 @@ jobs:
       working-directory: ./ahsaccv3-infra-demo/core/
       run: |
         terraform init
+    
+    - name: Terraform Plan
+      id: plan
+      working-directory: ./ahsaccv3-infra-demo/core/
+      run: |
+        terraform plan -var-file=dev.tfvars -out=dev.tfplan
       
