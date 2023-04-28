@@ -7,7 +7,7 @@ name: AzureLoginSample
 jobs:
 
   build-and-deploy:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
     
     - uses: azure/login@v1
@@ -41,5 +41,6 @@ jobs:
     
     - name: Terraform init
       id: init
+      working-directory: ahsaccv3-infra-demo/core
       run: terraform init
       
