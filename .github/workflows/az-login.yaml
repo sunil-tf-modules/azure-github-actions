@@ -33,7 +33,6 @@ jobs:
       with:
         repository: sunil-tf-modules/ahsaccv3-infra-demo
         ref: main
-        path: ahsaccv3-infra-demo/core
     
     - name: Check files
       working-directory: ./ahsaccv3-infra-demo/core
