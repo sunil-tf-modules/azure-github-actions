@@ -27,3 +27,18 @@ jobs:
     - name: Terraform version check
       run: |
         terraform -version
+    
+    - name: Checkout tools repo
+      uses: actions/checkout@v3
+      with:
+        repository: sunil-tf-modules/ahsaccv3-infra-demo
+        path: ahsaccv3-infra-demo/core
+    
+    - name: Check files
+      run: |
+        ls -l
+    
+    - name: Terraform init
+      id: init
+      run: terraform init
+      
