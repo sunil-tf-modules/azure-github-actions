@@ -36,6 +36,7 @@ jobs:
         path: ahsaccv3-infra-demo/core
     
     - name: Check files
+      working-directory: ./ahsaccv3-infra-demo/core
       run: |
         ls -l
     
