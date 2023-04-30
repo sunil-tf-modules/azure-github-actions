@@ -1,0 +1,28 @@
+name: if-else condition
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Select a value"
+        default: "hi"
+        type: string
+
+jobs:
+  condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: if condition
+        run: |
+          if [ ${{ github.ref }} == 'refs/heads/prod' ]; then
+            echo ">>> PROD branch"
+          elif [ ${{ github.ref }} == 'refs/heads/dev' ]; then
+            echo ">>> DEV branch"
+          elif [ ${{ github.ref }} == 'refs/heads/main' ]; then
+            echo ">>> MAIN branch"
+          elif [ ${{ github.ref }} == 'refs/heads/preprod' ]; then
+            echo ">>> PRE-PROD branch"
+          else
+            echo "neither of the branches"
+          fi
+        shell: bash
