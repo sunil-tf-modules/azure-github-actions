@@ -1,4 +1,4 @@
-name: IF-ELSE Condition
+name: if-else condition
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   condition:
-    runs-on: ubuntu-lates
+    runs-on: ubuntu-latest
     steps:
       - name: if condition
         run: |
