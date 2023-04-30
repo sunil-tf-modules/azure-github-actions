@@ -1,0 +1,31 @@
+# File: .github/workflows/az-login.yml
+name: Terraform IAC
+
+on: 
+  [push]
+
+env:
+  USER_INPUT=""
+
+jobs:
+  terraform:
+    name: 'Terraform'
+    runs-on: ubuntu-latest
+    steps:
+    - name: Prompt user for input
+      id: user_input
+      uses: actions/toolkit@v2
+      with:
+        prompt: 'Do you want to proceed with apply?'
+        default: 'no'
+        silent: true
+    
+    - name: Validate user response to proceed/cancel
+      if: steps.user_input.outputs.result == 'yes'
+      run: |
+        echo "User chose to proceed."
+    
+    - name: user inputs proceed
+      id: proceed
+      run: |
+        echo "PROCEED!"

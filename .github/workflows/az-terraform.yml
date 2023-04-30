@@ -1,3 +1,4 @@
+# File: .github/workflows/az-terraform.yml
 name: Deploy to Azure
 
 on:
@@ -11,21 +12,20 @@ env:
 
 jobs:
   deploy:
+    name: Terraform workflow
     runs-on: ubuntu-latest
-
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - uses: azure/login@v1
+    - name: Azure login with login@v1
+      uses: azure/login@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS_SUNILNGVLI_SDK }}
     
-    - run: |
+    - name: Check Azure Connection with a command
+      run: |
         az account show
-
-    - name: Azure account details check
-      run: az account show
 
     - name: Terraform init
       uses: hashicorp/setup-terraform@v1
