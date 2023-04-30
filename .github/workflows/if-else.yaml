@@ -14,10 +14,10 @@ jobs:
     steps:
       - name: if condition
         run: |
-          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
-            echo "is MAIN branch"
-          elif [ ${{ github.ref }} == 'refs/heads/dev' ]; then
+          if [ ${{ github.ref }} == 'refs/heads/dev' ]; then
             echo "is DEV branch"
+          elif [ ${{ github.ref }} == 'refs/heads/main' ]; then
+            echo "is MAIN branch"
           else
             echo "is neither MAIN nor DEV branch"
           fi
