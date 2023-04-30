@@ -3,7 +3,7 @@ name: Terraform IAC
 
 on: 
   [push]
-  
+
 jobs:
   build:
     strategy:
@@ -11,11 +11,17 @@ jobs:
         user_input:
           - "proceed"
           - "abort"
+        timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
-      - name: Step 01 - Validate user input
+      - name: Get user input
+        run: |
+          echo "Please enter 'proceed' or 'abort':"
+          read user_input
+          echo "User input: $user_input"
+      - name: Validate user input
         if: matrix.user_input == 'abort'
         run: exit 1
-      - name: Step 02 - Proceed to next step
+      - name: Proceed to next step
         if: matrix.user_input == 'proceed'
-        run: echo "Proceeding to next step"  
+        run: echo "Proceeding to next step"
