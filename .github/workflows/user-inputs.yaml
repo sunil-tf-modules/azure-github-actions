@@ -2,29 +2,33 @@
 name: Terraform IAC
 
 on: 
-  [push]
+  workflow_dispatch
 
 jobs:
-  build:
+  DEV:
     runs-on: ubuntu-latest
     steps:
-      - name: Get user input
+      - name: Verify user input
+        timeout-minutes: 0.5
         run: |
-          echo -n "Please enter 'proceed' or 'abort':"
-          read -t 10 user_input || true
-          echo -n "User input: $user_input" >> $GITHUB_ENV
-      - name: Wait for user input
-        run: sleep 5s
-        if: always()
-      - name: Validate user input
-        run: |
-          if [ "$user_input" == "abort" ]; then
-            exit 1
-          fi
-      - name: Proceed to next step
-        run: |
-          if [ "$user_input" == "proceed" ]; then
-            echo "Proceeding to next step"
-          fi
+          echo "DEV"
+      # - name: Get user input
+      #   run: |
+      #     echo -n "Please enter 'proceed' or 'abort':"
+      #     read -t 10 user_input || true
+      #     echo -n "User input: $user_input" >> $GITHUB_ENV
+      # - name: Wait for user input
+      #   run: sleep 5s
+      #   if: always()
+      # - name: Validate user input
+      #   run: |
+      #     if [ "$user_input" == "abort" ]; then
+      #       exit 1
+      #     fi
+      # - name: Proceed to next step
+      #   run: |
+      #     if [ "$user_input" == "proceed" ]; then
+      #       echo "Proceeding to next step"
+      #     fi
 
   
