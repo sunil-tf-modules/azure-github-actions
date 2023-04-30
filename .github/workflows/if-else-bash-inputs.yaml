@@ -1,0 +1,24 @@
+name: if-else condition with inputs
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Enter a value"
+        default: "hi"
+        type: string
+
+jobs:
+  condition:
+    runs-on: ubuntu-latest
+    steps:
+      - name: if condition
+        shell: bash
+        run: |
+          if [ ${{ inputs.action }} == "hi" ]; then
+            echo "default option"
+          elif [ ${{ github.ref }} == "hello" ]; then
+            echo "user entered 'hello'"
+          else
+            echo "no value entered"
+          fi
