@@ -8,23 +8,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Get user input
-      run: |
-        echo "Please enter 'proceed' or 'abort':"
-        read user_input
-        echo "User input: $user_input" >> $GITHUB_ENV
-    - name: Wait for user input
-      run: sleep 5s
-      if: always()
-    - name: Validate user input
-      run: |
-        if [[ "$user_input" == "abort" ]]; then
-          exit 1
-        fi
-    - name: Proceed to next step
-      run: |
-        if [[ "$user_input" == "proceed" ]]; then
-          echo "Proceeding to next step"
-        fi
+      - name: Get user input
+        run: |
+          echo "Please enter 'proceed' or 'abort':"
+          read user_input </dev/tty
+          echo "User input: $user_input" >> $GITHUB_ENV
+      - name: Wait for user input
+        run: sleep 5s
+        if: always()
+      - name: Validate user input
+        run: |
+          if [ "$user_input" == "abort" ]; then
+            exit 1
+          fi
+      - name: Proceed to next step
+        run: |
+          if [ "$user_input" == "proceed" ]; then
+            echo "Proceeding to next step"
+          fi
 
   
