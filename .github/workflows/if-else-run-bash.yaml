@@ -2,11 +2,6 @@ name: if-else condition
 
 on:
   workflow_dispatch:
-    inputs:
-      action:
-        description: "Select a value"
-        default: "hi"
-        type: string
 
 jobs:
   condition:
