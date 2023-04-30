@@ -12,13 +12,21 @@ jobs:
   condition:
     runs-on: ubuntu-latest
     steps:
-      - name: if condition
+      - name: if condition with user input
         shell: bash
         run: |
+          # Hi
           if [ ${{ inputs.action }} == "hi" ]; then
-            echo "default option"
-          elif [ ${{ github.ref }} == "hello" ]; then
-            echo "user entered 'hello'"
+            echo "default option - 'Hi'"
+          # Hello
+          elif [ ${{ inputs.action }} == "hello" ]; then
+            echo "user entered 'Hello'"
+          # Hola
+          elif [ ${{ inputs.action }} == "hola" ]; then
+            echo "user entered 'Hola'"
+          # Bonjour
+          elif [ ${{ inputs.action }} == "bonjour" ]; then
+            echo "user entered 'Bonjour'"          
           else
             echo "no value entered"
           fi
