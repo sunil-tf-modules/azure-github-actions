@@ -3,26 +3,19 @@ name: Terraform IAC
 
 on: 
   [push]
-
+  
 jobs:
-  terraform:
-    name: 'User inputs test'
+  build:
+    strategy:
+      matrix:
+        user_input:
+          - "proceed"
+          - "abort"
     runs-on: ubuntu-latest
     steps:
-    - name: Prompt user for input
-      id: user_input
-      uses: actions/toolkit@v1
-      with:
-        prompt: 'Do you want to proceed with apply?'
-        default: 'no'
-        silent: true
-    
-    - name: Validate user response to proceed/cancel
-      if: steps.user_input.outputs.result == 'yes'
-      run: |
-        echo "User chose to proceed."
-    
-    - name: user inputs proceed
-      id: proceed
-      run: |
-        echo "PROCEED!"
+      - name: Step 01 - Validate user input
+        if: matrix.user_input == 'abort'
+        run: exit 1
+      - name: Step 02 - Proceed to next step
+        if: matrix.user_input == 'proceed'
+        run: echo "Proceeding to next step"  
