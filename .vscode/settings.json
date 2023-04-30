@@ -1,0 +1,5 @@
+{
+    "yaml.schemas": {
+        "https://json.schemastore.org/github-workflow.json": "file:///Users/sna56c/Work/Repos/sunil/terraform/azure-github-actions/.github/workflows/user-inputs.yaml"
+    }
+}
