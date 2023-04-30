@@ -10,9 +10,9 @@ jobs:
     steps:
       - name: Get user input
         run: |
-          echo "Please enter 'proceed' or 'abort':"
+          echo -n "Please enter 'proceed' or 'abort':"
           read -t 10 user_input || true
-          echo "User input: $user_input" >> $GITHUB_ENV
+          echo -n "User input: $user_input" >> $GITHUB_ENV
       - name: Wait for user input
         run: sleep 5s
         if: always()
@@ -26,4 +26,5 @@ jobs:
           if [ "$user_input" == "proceed" ]; then
             echo "Proceeding to next step"
           fi
+
   
