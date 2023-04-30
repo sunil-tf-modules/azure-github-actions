@@ -11,7 +11,7 @@ jobs:
       - name: Get user input
         run: |
           echo "Please enter 'proceed' or 'abort':"
-          read user_input </dev/tty
+          read -t 10 user_input || true
           echo "User input: $user_input" >> $GITHUB_ENV
       - name: Wait for user input
         run: sleep 5s
@@ -26,5 +26,4 @@ jobs:
           if [ "$user_input" == "proceed" ]; then
             echo "Proceeding to next step"
           fi
-
   
