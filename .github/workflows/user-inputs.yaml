@@ -6,12 +6,12 @@ on:
 
 jobs:
   terraform:
-    name: 'Terraform'
+    name: 'User inputs test'
     runs-on: ubuntu-latest
     steps:
     - name: Prompt user for input
       id: user_input
-      uses: actions/toolkit@v2
+      uses: actions/toolkit
       with:
         prompt: 'Do you want to proceed with apply?'
         default: 'no'
