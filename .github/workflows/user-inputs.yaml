@@ -6,12 +6,7 @@ on:
 
 jobs:
   build:
-    strategy:
-      matrix:
-        user_input:
-          - "proceed"
-          - "abort"
-        timeout-minutes: 5
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Get user input
@@ -20,8 +15,9 @@ jobs:
           read user_input
           echo "User input: $user_input"
       - name: Validate user input
-        if: matrix.user_input == 'abort'
+        if: ${{ env.user_input == 'abort' }}
         run: exit 1
       - name: Proceed to next step
-        if: matrix.user_input == 'proceed'
+        if: ${{ env.user_input == 'proceed' }}
         run: echo "Proceeding to next step"
+  
