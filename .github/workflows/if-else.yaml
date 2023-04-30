@@ -1,0 +1,24 @@
+name: IF-ELSE Condition
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: "Select a value"
+        default: "hi"
+        type: string
+
+jobs:
+  condition:
+    runs-on: ubuntu-lates
+    steps:
+      - name: if condition
+        run: |
+          if [ ${{ github.ref }} == 'refs/heads/main' ]; then
+            echo "is MAIN branch"
+          elif [ ${{ github.ref }} == 'refs/heads/dev' ]; then
+            echo "is DEV branch"
+          else
+            echo "is neither MAIN nor DEV branch"
+          fi
+        shell: bash
