@@ -4,9 +4,6 @@ name: Terraform IAC
 on: 
   [push]
 
-env:
-  USER_INPUT=""
-
 jobs:
   terraform:
     name: 'Terraform'
