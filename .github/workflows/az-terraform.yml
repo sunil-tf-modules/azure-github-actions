@@ -17,16 +17,13 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Login to Azure
-      uses: azure/login@v1
+    - uses: azure/login@v1
       with:
-        creds: |
-          {
-            "clientId": "${{ env.ARM_SUBSCRIPTION_ID }}",
-            "clientSecret": "${{ env.ARM_CLIENT_ID }}",
-            "subscriptionId": "${{ env.ARM_SUBSCRIPTION_ID }}",
-            "tenantId": "${{ env.ARM_TENANT_ID }}"
-          }
+        creds: ${{ secrets.AZURE_CREDENTIALS_SUNILNGVLI_SDK }}
+    
+    - run: |
+        az account show
+
     - name: Azure account details check
       run: az account show
 
