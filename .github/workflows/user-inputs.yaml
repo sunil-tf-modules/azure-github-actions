@@ -1,5 +1,4 @@
-# File: .github/workflows/az-login.yml
-name: Terraform IAC
+name: User Inputs
 
 on: 
   workflow_dispatch

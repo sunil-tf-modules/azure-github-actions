@@ -1,0 +1,26 @@
+name: Google Search Snippets
+
+on:
+  workflow_dispatch
+
+jobs:
+
+  validate:
+    strategy:
+      matrix:
+        input:
+          - "yes"
+          - "no"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ask for confirmation
+        run: |
+          echo "Are you sure you want to proceed?"
+          read confirmation
+          echo "::set-output name=confirmation::$confirmation"
+      - name: Check confirmation
+        if: ${{ matrix.input == steps.validate.outputs.confirmation }}
+        run: echo "User confirmed, proceeding..."
+      - name: Abort
+        if: ${{ matrix.input != steps.validate.outputs.confirmation }}
+        run: echo "User did not confirm, aborting..."
