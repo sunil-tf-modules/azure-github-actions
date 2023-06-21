@@ -9,7 +9,8 @@ jobs:
     steps:
       - name: Set the value
         run: |
-          echo "action_state=maimi" >> "$GITHUB_ENV"
+          value=$(uname -a)
+          echo "action_state=$value" >> "$GITHUB_ENV"
       - name: Use the value
         run: |
           echo "${{ env.action_state }}" # This will output 'yellow'
