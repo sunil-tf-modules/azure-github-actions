@@ -13,4 +13,4 @@ jobs:
           echo "os_name=$value" >> "$GITHUB_ENV"
       - name: Use the value
         run: |
-          echo "${{ env.os_name }}" # This will output 'yellow'
+          echo "${{ env.os_name }}" # This will output 'os name'
