@@ -9,8 +9,8 @@ jobs:
     steps:
       - name: Set the value
         run: |
-          value=$(uname -a)
-          echo "action_state=$value" >> "$GITHUB_ENV"
+          value=$(uname -s)
+          echo "os_name=$value" >> "$GITHUB_ENV"
       - name: Use the value
         run: |
-          echo "${{ env.action_state }}" # This will output 'yellow'
+          echo "${{ env.os_name }}" # This will output 'yellow'
