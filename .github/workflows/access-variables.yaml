@@ -7,10 +7,12 @@ jobs:
   my-job:
     runs-on: ubuntu-latest
     steps:
-      - name: Set Variable
-        run: echo "Hello, world!"
-        id: my-step
-      - name: Use Variable
-        run: echo "The previous step said ${{ env.MY_VAR }}"
-        env:
-          MY_VAR: ${{ steps.my-step.outputs.stdout }}
+      - name: Set the value
+        id: step_one
+        run: |
+          echo "action_state=yellow" >> "$GITHUB_ENV"
+      - name: Use the value
+        id: step_two
+        run: |
+
+          echo "${{ env.action_state }}" # This will output 'yellow'
