@@ -32,8 +32,8 @@ jobs:
           env
       - name: Get Repository Name
         run: |
-          API-Name=$(echo "${{ github.repository }}" | cut -d'/' -f2) >> $GITHUB_ENV
-          echo "API Name: ${{ env.API-Name }}"
+          # API-Name=$(echo "${{ github.repository }}" | cut -d'/' -f2) >> $GITHUB_ENV
+          # echo "API Name: ${{ env.API-Name }}"
           
           GITHUB_REPO=$(echo "${{ github.repository }}" | cut -d'/' -f2) >>$GITHUB_ENV
           echo -e "check env:\n $(env)"
