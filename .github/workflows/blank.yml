@@ -34,4 +34,4 @@ jobs:
         run: |
           GITHUB_REPO=$(echo "${{ github.repository }}" | cut -d'/' -f2)>>$GITHUB_ENV
           echo "$GITHUB_REPO"
-          echo "${{ github.repo }}"
+          echo "${{ env.GITHUB_REPO }}"
