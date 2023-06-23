@@ -33,5 +33,5 @@ jobs:
       - name: Get Repository Name
         run: |
           GITHUB_REPO=$(echo "${{ github.repository }}" | cut -d'/' -f2)>>$GITHUB_ENV
-          echo "$GITHUB_REPO"
-          echo "${{ env.GITHUB_REPO }}"
+          echo "with plain var: $GITHUB_REPO"
+          echo "with env var: ${{ env.GITHUB_REPO }}"
