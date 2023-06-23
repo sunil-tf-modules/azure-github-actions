@@ -30,3 +30,7 @@ jobs:
         run: |
           echo "Default ENV VARS"
           env
+      - name: Get Repository Name
+        run: |
+          github.repo=$(echo "${{ github.repository }} | cut -d"/" -f2") >>$GITHUB_ENV
+          echo ${{ github.repo }}
