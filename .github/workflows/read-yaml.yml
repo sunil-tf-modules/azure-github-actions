@@ -15,7 +15,7 @@ jobs:
         uses: pietrobolcato/action-read-yaml@1.0.0
         id: read_action_js
         with:
-          config: ${{ github.workspace }}/examples/config_example.yaml
+          config: ${{ github.workspace }}/org.yaml
 
       - name: use-yaml-file
         run: |
